@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react';
 
 function NavBar(props) 
 {
-  function handleClick(title,setData)
+  function handleClick(title,setData,setTitle)
   {
       axios({
         method: "GET",
@@ -16,6 +16,7 @@ function NavBar(props)
         const model = res.data[`${title}`]
         setData(JSON.parse(JSON.stringify(model)));
       }) 
+      setTitle(title);
   }
 
   const titles = props.titles ;
@@ -23,7 +24,7 @@ function NavBar(props)
     <div className="topnav">
       {
         titles.map((title) => {
-        return <a key={title} onClick={() => handleClick(title,props.setData)}>{title}</a>
+        return <a key={title} onClick={() => handleClick(title,props.setData,props.setTitle)}>{title}</a>
         })
       }
     </div>
@@ -66,13 +67,22 @@ function FormatGetData({data})
 function App() {
   
   const [data,setData] = useState([]);
-
+  const [title, setTitle] = useState("") ;
+  const [formButton,setFormButton] = useState(true);
+  function handleOnClick(formButton)
+  {
+      setFormButton(!formButton);
+  }
   return (
     <div className="App">
-      <NavBar titles={["artists","venues","shows","genres"]} setData={setData} />
+      <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} />
       <div className="dataContainer">
         <FormatGetData data={data}/>
       </div>
+      <button className='btn' onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
+      <form hidden={formButton}>
+        <input type="text"  hidden={formButton}/>
+      </form>
     </div>
   );
 }
