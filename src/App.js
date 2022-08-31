@@ -1,26 +1,43 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from "axios";
+
+
+function handleClick(title)
+{
+    axios({
+      method: "GET",
+      url : `/${title}`
+    })
+    .then(res => {
+      const model = res.data[`${title}`]
+      model.map((elm) => 
+      {
+        console.log(elm)
+      })
+    }
+    )
+    
+}
 
 function NavBar(props) 
 {
   const titles = props.titles ;
-
   return(
-    <div class="topnav">
+    <div className="topnav">
       {
         titles.map((title) => {
-        return <a href={title}>{title}</a>
+        return <a href={title} key={title} onClick={() => handleClick(title)}>{title}</a>
         })
       }
     </div>
-
   );
 }
 
 function App() {
   return (
     <div className="App">
-      <NavBar titles={["artists","venues","show","genres"]}/>
+      <NavBar titles={["artists","venues","shows","genres"]}/>
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
