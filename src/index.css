@@ -22,7 +22,32 @@ body {
   color: black;
 }
 
+.formatData 
+{
+  display: inline-block;
+  justify-content: space-around;
+  margin-left: 30px; 
+  margin-top: 20px ;
+  background-color:#0583D2;
+  padding: 10px;
+  border-radius: 10px;
+
+
+}
+
 .topnav a.active {
   background-color: #04AA6D;
   color: white;
+}
+
+.valueColor
+{
+  color: #B8E3FF;
+}
+
+.textSizeFont
+{
+   font-family: 'Raleway',sans-serif;
+   font-size: 18px; font-weight: 500;
+    line-height: 32px; margin: 0 0 24px; 
 }

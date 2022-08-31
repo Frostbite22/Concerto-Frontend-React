@@ -31,6 +31,37 @@ function NavBar(props)
   );
 }
 
+function FormatGetData({data})
+{
+  return (
+    <div>
+    {
+      data.map((element)=> {
+        return (
+          <>
+          
+            <div key={element.id} className='formatData'>
+              {
+                Object.entries(element).map( ([key,value]) => 
+                { 
+                  return (
+                    
+                    <div>
+                      <span className='textSizeFont'>{key}</span> : <span className='valueColor'>{typeof value !== 'object'? value : null}</span>
+                    </div>
+                  )
+                }
+                ) 
+              }
+          </div>
+         </>
+        )
+      })
+    }
+  </div>
+
+  )
+}
 
 function App() {
   
@@ -39,32 +70,9 @@ function App() {
   return (
     <div className="App">
       <NavBar titles={["artists","venues","shows","genres"]} setData={setData} />
-      <div>
-      {
-        data.map((element)=> {
-          return (
-            <>
-            <div key={element.id}>
-              {
-                Object.entries(element).map( ([key,value]) => 
-                { 
-                  return (
-                    
-                    <div>
-                      {key} : {typeof value !== 'object'? value : null}
-                    </div>
-                  )
-                }
-                ) 
-              }
-            </div>
-            <br></br>
-           </>
-          )
-        })
-      }
-    </div>
-
+      <div >
+        <FormatGetData data={data}/>
+      </div>
     </div>
   );
 }
