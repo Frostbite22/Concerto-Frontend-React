@@ -6,7 +6,7 @@ import {useEffect, useState} from 'react';
 
 function NavBar(props) 
 {
-  function handleClick(title,setData,setTitle)
+  function handleClick(title,setData,setTitle,setFormButton)
   {
       axios({
         method: "GET",
@@ -17,6 +17,7 @@ function NavBar(props)
         setData(JSON.parse(JSON.stringify(model)));
       }) 
       setTitle(title);
+      setFormButton(true);
   }
 
   const titles = props.titles ;
@@ -24,7 +25,7 @@ function NavBar(props)
     <div className="topnav">
       {
         titles.map((title) => {
-        return <a key={title} onClick={() => handleClick(title,props.setData,props.setTitle)}>{title}</a>
+        return <a key={title} onClick={() => handleClick(title,props.setData,props.setTitle,props.setFormButton)}>{title}</a>
         })
       }
     </div>
@@ -75,7 +76,7 @@ function App() {
   }
   return (
     <div className="App">
-      <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} />
+      <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} setFormButton={setFormButton}/>
       <div className="dataContainer">
         <FormatGetData data={data}/>
       </div>
