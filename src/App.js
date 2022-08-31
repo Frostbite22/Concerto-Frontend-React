@@ -70,7 +70,7 @@ function App() {
   return (
     <div className="App">
       <NavBar titles={["artists","venues","shows","genres"]} setData={setData} />
-      <div >
+      <div className="dataContainer">
         <FormatGetData data={data}/>
       </div>
     </div>
