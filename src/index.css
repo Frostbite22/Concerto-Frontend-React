@@ -28,7 +28,7 @@ body {
   justify-content: space-around;
   margin-left: 30px; 
   margin-top: 30px ;
-  background-color:#0583D2;
+  background-color:#B8E3FF;
   padding: 10px;
   border-radius: 10px;
 
@@ -42,7 +42,7 @@ body {
 
 .valueColor
 {
-  color: #B8E3FF;
+  color: #0583D2;
 }
 
 .textSizeFont
@@ -55,18 +55,18 @@ body {
 .dataContainer
 {
   max-width: 80%;
-  background-color: #B8E3FF;
+  background-color: #1e1e1e;
   justify-content: center;
   margin-left: 10%;
   margin-right: 10%;
   padding-bottom: 20px;
-  border-radius: 20px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 .btn
 {
   margin: 30px;
-  background-color: #0583D2;
+  background-color:  #B8E3FF;
   border: none;
   border-radius: 10px;
   color: white;
@@ -75,4 +75,20 @@ body {
   text-decoration: none;
   font-size: 16px;
 
+}
+
+.background 
+{
+  background-image: url("music.jpg") ;
+
+  /* Full height */
+
+  max-width: 65%;
+  max-height: 100%;
+  margin : 0 ;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }

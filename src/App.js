@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import background from './music.jpg';
 import './App.css';
 import axios from "axios";
 import {useEffect, useState} from 'react';
@@ -89,10 +90,11 @@ function App() {
   return (
     <div className="App">
       <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} setFormButton={setFormButton}/>
+      <img className='background' src={background} hidden={data==""? false : true}/>
       <div className="dataContainer" hidden={data==""? true : false}>
         <FormatGetData data={data}/>
       </div>
-      <button className='btn' onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
+      <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
       <form hidden={formButton}>
         <input type="text"  hidden={formButton}/>
       </form>
