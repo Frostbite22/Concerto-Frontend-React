@@ -101,8 +101,11 @@ function App() {
       </div>
       <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
       <form hidden={formButton} className="formLayout">
-        <label htmlFor="name" hidden={formButton}>name </label>
+        <label htmlFor="name" hidden={formButton}>name 
         <input type="text" id="name" hidden={formButton}/>
+        </label>
+        <input type="submit" value="Submit" className='btn'/>
+
       </form>
     </div>
   );
