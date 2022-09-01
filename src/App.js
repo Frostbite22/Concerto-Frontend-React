@@ -64,6 +64,28 @@ function FormatGetData({data})
   )
 }
 
+function FormComponent(props)
+{
+  const fieldsClean = props.fields.filter(field => field !== 'id')
+
+  return(
+    <form hidden={props.formButton} className="formLayout" onSubmit={props.handleSubmit}>
+      {
+        fieldsClean.map((field) => {
+          return(
+            <label htmlFor={field} hidden={props.formButton}>{field} 
+            <input type="text" id={field} hidden={props.formButton}/>
+            </label>
+          )
+        })
+      }
+    <input type="submit" value="Submit" className='btn'/>
+
+  </form>
+
+  );
+}
+
 function App() {
   
   const [changed,setChanged] = useState(false);
@@ -98,12 +120,15 @@ function App() {
   function handleSubmit(event)
   {
     const newData = {} ; 
-    newData[event.target.elements.name.id] = event.target.elements.name.value ;
+    for (let i = 0 ; i <event.target.elements.length; i++)
+    {
+      newData[event.target.elements[i].id] = event.target.elements[i].value ;
+    }
 
     console.log(newData)
     axios({
       method: "post",
-      url: "/create/genre",
+      url: `/create/${title.slice(0, -1)}`,
       data: newData,
       headers: { "Content-Type": "application/json" },
     }).then(function (response) {
@@ -114,7 +139,6 @@ function App() {
         //handle error
         console.log(response);
       });
-    
   }
 
   
@@ -127,13 +151,7 @@ function App() {
         <FormatGetData data={data}/>
       </div>
       <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
-      <form hidden={formButton} className="formLayout" onSubmit={handleSubmit}>
-        <label htmlFor="name" hidden={formButton}>name 
-        <input type="text" id="name" hidden={formButton}/>
-        </label>
-        <input type="submit" value="Submit" className='btn'/>
-
-      </form>
+      <FormComponent fields={fields} formButton={formButton} handleSubmit={handleSubmit}/>
     </div>
   );
 }
