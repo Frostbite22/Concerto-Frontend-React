@@ -49,7 +49,19 @@ function FormatGetData({data})
                   return (
                     
                     <div>
-                      <span className='textSizeFont'>{key}</span> : <span className='valueColor'>{typeof value !== 'object'? value : null}</span>
+                      <span className='textSizeFont'>{key}</span> : <span className='valueColor'>{typeof value !== 'object'? value : Object.entries(value).map(([key,value])=> {
+                        return(
+                          <div>
+                            {typeof value !== 'object' ? value : Object.entries(value).map(([key,value])=> {
+                              return (
+                                <div>
+                                  <span className='textSizeFont'>{key}</span> : <span className='valueColor'>{value }</span>
+                                </div>
+                              )
+                            })}
+                          </div>
+                        )
+                      })}</span>
                     </div>
                   )
                 }
@@ -77,7 +89,7 @@ function App() {
   return (
     <div className="App">
       <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} setFormButton={setFormButton}/>
-      <div className="dataContainer">
+      <div className="dataContainer" hidden={data==""? true : false}>
         <FormatGetData data={data}/>
       </div>
       <button className='btn' onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
