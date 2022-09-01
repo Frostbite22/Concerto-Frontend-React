@@ -42,8 +42,7 @@ function FormatGetData({data})
       data.map((element)=> {
         return (
           <>
-          
-            <div key={element.id} className='formatData'>
+            <div key={element.id} className="formatData">
               {
                 Object.entries(element).map( ([key,value]) => 
                 { 
@@ -68,7 +67,7 @@ function FormatGetData({data})
                 }
                 ) 
               }
-          </div>
+            </div>
          </>
         )
       })
@@ -90,13 +89,14 @@ function App() {
   return (
     <div className="App">
       <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} setFormButton={setFormButton}/>
-      <img className='background' src={background} hidden={data==""? false : true}/>
+      <img className='background' alt="background" src={background} hidden={data==""? false : true}/>
       <div className="dataContainer" hidden={data==""? true : false}>
         <FormatGetData data={data}/>
       </div>
       <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
-      <form hidden={formButton}>
-        <input type="text"  hidden={formButton}/>
+      <form hidden={formButton} className="formLayout">
+        <label htmlFor="name" hidden={formButton}>name </label>
+        <input type="text" id="name" hidden={formButton}/>
       </form>
     </div>
   );
