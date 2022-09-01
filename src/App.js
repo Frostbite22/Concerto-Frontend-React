@@ -7,14 +7,19 @@ import {useEffect, useState} from 'react';
 
 function NavBar(props) 
 {
-  function handleClick(title,setData,setTitle,setFormButton)
+  function handleClick(title,setData,setTitle,setFormButton,setFields)
   {
       axios({
         method: "GET",
         url : `/${title}`
       })
       .then(res => {
-        const model = res.data[`${title}`]
+        const cleanFields = []
+        const model = res.data[`${title}`];
+        Object.entries(model[0]).map(([key,value])=> {
+          cleanFields.push(key); 
+        })
+        setFields(cleanFields);
         setData(JSON.parse(JSON.stringify(model)));
       }) 
       setTitle(title);
@@ -26,7 +31,7 @@ function NavBar(props)
     <div className="topnav">
       {
         titles.map((title) => {
-        return <a key={title} onClick={() => handleClick(title,props.setData,props.setTitle,props.setFormButton)}>{title}</a>
+        return <a key={title} onClick={() => handleClick(title,props.setData,props.setTitle,props.setFormButton,props.setFields)}>{title}</a>
         })
       }
     </div>
@@ -79,6 +84,7 @@ function FormatGetData({data})
 
 function App() {
   
+  const [fields,setFields] = useState([]);
   const [data,setData] = useState([]);
   const [title, setTitle] = useState("") ;
   const [formButton,setFormButton] = useState(true);
@@ -88,7 +94,7 @@ function App() {
   }
   return (
     <div className="App">
-      <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} setFormButton={setFormButton}/>
+      <NavBar titles={["artists","venues","shows","genres"]} setData={setData} setTitle={setTitle} setFormButton={setFormButton} setFields={setFields}/>
       <img className='background' alt="background" src={background} hidden={data==""? false : true}/>
       <div className="dataContainer" hidden={data==""? true : false}>
         <FormatGetData data={data}/>
