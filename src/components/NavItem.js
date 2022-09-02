@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate} from 'react-router-dom' ; 
 
 import FormatGetData from "./FormatGetData";
 import FormComponent from "./FormComponent";
@@ -10,7 +11,6 @@ function NavItem(props)
   const [fields,setFields] = useState([]);
   const [data,setData] = useState([]);
   const [formButton,setFormButton] = useState(true);
-
 
   const title = props.title ; 
 
@@ -48,7 +48,7 @@ function NavItem(props)
       <FormatGetData data={data}/>
     </div>
     <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
-    <FormComponent fields={fields} title={title} formButton={formButton} />
+    <FormComponent fields={fields} title={title} setTitle={props.setTitle} formButton={formButton} />
     </>
 
   );

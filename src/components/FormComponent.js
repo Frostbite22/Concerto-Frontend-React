@@ -1,4 +1,5 @@
 import axios from "axios";
+import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate} from 'react-router-dom' ; 
 
 
 function FormComponent(props)
@@ -11,6 +12,7 @@ function FormComponent(props)
     {
       newData[event.target.elements[i].id] = event.target.elements[i].value ;
     }
+
 
     console.log(newData)
     axios({
@@ -29,7 +31,7 @@ function FormComponent(props)
   const fieldsClean = props.fields.filter(field => field !== 'id')
 
   return(
-    <form hidden={props.formButton} className="formLayout" onSubmit={handleSubmit}>
+    <form hidden={props.formButton} className="formLayout" onSubmit={handleSubmit} >
       {
         fieldsClean.map((field) => {
           return(

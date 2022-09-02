@@ -12,18 +12,22 @@ import NavItem from './components/NavItem' ;
 function App() {
   
   const [title, setTitle] = useState("") ;
-  
   return (
     <BrowserRouter>
       <Routes>
         <Route  path="/" element={
           <div className='App'>
+
             <NavBar titles={["artists","venues","shows","genres"]} setTitle={setTitle}/>
             <img className='background' alt="background" src={background} hidden={title===""?false:true}/>
             {title!==""?<Outlet />:null}
           </div>
         }>
-          <Route path={title}  element={ <NavItem title={title}/> }/>
+          <Route path="genres" element={ <NavItem title="genres" /> }/>
+          <Route path="venues" element={ <NavItem title="venues" /> }/>
+          <Route path="artists" element={ <NavItem title="artists" /> }/>
+          <Route path="shows" element={ <NavItem title="shows" /> }/>
+
         </Route>
       </Routes>
     
