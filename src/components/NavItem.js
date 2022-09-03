@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate} from 'react-router-dom' ; 
+import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate, useParams} from 'react-router-dom' ; 
 
 import FormatGetData from "./FormatGetData";
 import FormComponent from "./FormComponent";
@@ -14,6 +14,7 @@ function NavItem(props)
 
   const title = props.title ; 
 
+  const params = useParams(); 
 
   function handleOnClick(formButton)
   {
@@ -24,7 +25,7 @@ function NavItem(props)
   {
       axios({
         method: "GET",
-        url : `/${title}`
+        url : `/${title}/${params[`${title}_id`]}`
       })
       .then(res => {
         const cleanFields = []

@@ -25,6 +25,7 @@ function App() {
             <img className='background' alt="background" src={background} />
           } />
           <Route path="genres" element={ <NavItem title="genres" /> }/>
+          <Route path="genre/:genre_id" element={ <NavItem title="genre" /> }/>
           <Route path="venues" element={ <NavItem title="venues" /> }/>
           <Route path="artists" element={ <NavItem title="artists" /> }/>
           <Route path="shows" element={ <NavItem title="shows" /> }/>
