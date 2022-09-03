@@ -39,6 +39,7 @@ body {
 
 }
 
+.formatData:hover { transform: scale(1.1); }
 
 
 .topnav a.active {
@@ -73,6 +74,8 @@ body {
   padding-bottom: 20px;
   border-radius: 0px 0px 10px 10px;
 }
+
+
 
 .btn
 {

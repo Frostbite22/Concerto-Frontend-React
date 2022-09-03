@@ -1,13 +1,22 @@
+import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate, useParams} from 'react-router-dom' ; 
 
-function FormatGetData({data})
+
+function FormatGetData({data,title})
 {
+  let navigate = useNavigate()
+  let location = useLocation() 
+  function handleOnClick(id)
+  {
+    if(location.pathname === `/${title}`)
+    navigate(`${id}`);
+  }
   return (
     <div>
     {
       data.map((element)=> {
         return (
           <>
-            <div key={element.id} className="formatData">
+            <div key={element.id} className="formatData" onClick={() => handleOnClick(element.id)}>
               {
                 Object.entries(element).map( ([key,value]) => 
                 { 
