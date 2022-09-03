@@ -26,9 +26,16 @@ function App() {
           } />
           <Route path="genres" element={ <NavItem title="genres" /> }/>
           <Route path="genre/:genre_id" element={ <NavItem title="genre" /> }/>
+          
           <Route path="venues" element={ <NavItem title="venues" /> }/>
+          <Route path="venue/:venue_id" element={ <NavItem title="venue" /> }/>
+
           <Route path="artists" element={ <NavItem title="artists" /> }/>
+          <Route path="artist/:artist_id" element={ <NavItem title="artist" /> }/>
+
           <Route path="shows" element={ <NavItem title="shows" /> }/>
+          <Route path="show/:show_id" element={ <NavItem title="show" /> }/>
+
 
         </Route>
       </Routes>

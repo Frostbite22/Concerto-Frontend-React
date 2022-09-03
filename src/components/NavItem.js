@@ -15,6 +15,7 @@ function NavItem(props)
   const title = props.title ; 
 
   const params = useParams(); 
+  const url = params[`${title}_id`]!==undefined ? `/${title}/${params[`${title}_id`]}` : `/${title}`
 
   function handleOnClick(formButton)
   {
@@ -25,7 +26,7 @@ function NavItem(props)
   {
       axios({
         method: "GET",
-        url : `/${title}/${params[`${title}_id`]}`
+        url : url
       })
       .then(res => {
         const cleanFields = []
