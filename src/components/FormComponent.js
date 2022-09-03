@@ -31,7 +31,7 @@ function FormComponent(props)
   const fieldsClean = props.fields.filter(field => field !== 'id')
 
   return(
-    <form hidden={props.formButton} className="formLayout" onSubmit={handleSubmit} >
+    <form hidden={props.formButton } className="formLayout" onSubmit={handleSubmit} >
       {
         fieldsClean.map((field) => {
           return(

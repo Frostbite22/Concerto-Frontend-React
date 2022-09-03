@@ -8,8 +8,8 @@ function NavBar(props)
   
   const titles = props.titles ;
   let navigate = useNavigate();
-  const location = useLocation(); 
-  props.setTitle(location.pathname);
+  // const location = useLocation(); 
+  // props.setTitle(location.pathname);
 
   return(
     <div className="topnav">

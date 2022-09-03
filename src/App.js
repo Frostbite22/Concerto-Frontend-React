@@ -17,12 +17,13 @@ function App() {
       <Routes>
         <Route  path="/" element={
           <div className='App'>
-
             <NavBar titles={["artists","venues","shows","genres"]} setTitle={setTitle}/>
-            <img className='background' alt="background" src={background} hidden={title===""?false:true}/>
-            {title!==""?<Outlet />:null}
+            <Outlet />
           </div>
         }>
+          <Route index element={
+            <img className='background' alt="background" src={background} />
+          } />
           <Route path="genres" element={ <NavItem title="genres" /> }/>
           <Route path="venues" element={ <NavItem title="venues" /> }/>
           <Route path="artists" element={ <NavItem title="artists" /> }/>
