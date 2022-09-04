@@ -7,6 +7,9 @@ function FormComponent(props)
 
   let navigate = useNavigate() ;
 
+  //here to add update function 
+  /////////////////////////////
+  
   function handleCreate(event)
   {
     const newData = {} ; 

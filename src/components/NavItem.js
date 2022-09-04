@@ -50,7 +50,7 @@ function NavItem(props)
     <div className="dataContainer" hidden={data==""? true : false}>
       <FormatGetData data={data} title={title}/>
     </div>
-    <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ? haveParams ? 'update':`add ${title}`:"Hide" }</button>
+    <button className='btn' onClick={() => handleOnClick(formButton)}> {formButton===true ? haveParams ? 'update':`add ${title}`:"Hide" }</button>
     <FormComponent fields={fields} title={title} setTitle={props.setTitle} formButton={formButton} />
     </>
 
