@@ -51,7 +51,7 @@ function NavItem(props)
       <FormatGetData data={data} title={title}/>
     </div>
     <button className='btn' onClick={() => handleOnClick(formButton)}> {formButton===true ? haveParams ? 'update':`add ${title}`:"Hide" }</button>
-    <FormComponent fields={fields} title={title} setTitle={props.setTitle} formButton={formButton} />
+    <FormComponent fields={fields} title={title} id={haveParams?params[`${title}_id`]:null} setTitle={props.setTitle} formButton={formButton} />
     </>
 
   );

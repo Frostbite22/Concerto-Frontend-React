@@ -8,8 +8,30 @@ function FormComponent(props)
   let navigate = useNavigate() ;
 
   //here to add update function 
-  /////////////////////////////
-  
+  function handleUpdate(event)
+  {
+    const newData = {} ; 
+    for (let i = 0 ; i <event.target.elements.length; i++)
+    {
+      newData[event.target.elements[i].id] = event.target.elements[i].value ;
+    }
+
+
+    axios({
+      method: "post",
+      url: `/${props.title}/${props.id}/update`,
+      data: newData,
+      headers: { "Content-Type": "application/json" },
+    }).then(function (response) {
+        //handle success
+        navigate(-1);
+        console.log(response);
+      }).catch(function (response) {
+        //handle error
+        console.log(response);
+      });
+  }
+
   function handleCreate(event)
   {
     const newData = {} ; 
@@ -36,7 +58,7 @@ function FormComponent(props)
   const fieldsClean = props.fields.filter(field => field !== 'id')
 
   return(
-    <form hidden={props.formButton } className="formLayout" onSubmit={handleCreate} >
+    <form hidden={props.formButton } className="formLayout" onSubmit={props.id === null ?handleCreate: handleUpdate} >
       {
         fieldsClean.map((field) => {
           return(
