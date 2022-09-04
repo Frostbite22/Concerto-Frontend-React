@@ -15,7 +15,8 @@ function NavItem(props)
   const title = props.title ; 
 
   const params = useParams(); 
-  const url = params[`${title}_id`]!==undefined ? `/${title}/${params[`${title}_id`]}` : `/${title}`
+  const haveParams = params[`${title}_id`]!==undefined ? true : false ;
+  const url = haveParams ? `/${title}/${params[`${title}_id`]}` : `/${title}`
 
   function handleOnClick(formButton)
   {
@@ -49,7 +50,7 @@ function NavItem(props)
     <div className="dataContainer" hidden={data==""? true : false}>
       <FormatGetData data={data} title={title}/>
     </div>
-    <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ?`add ${title}`:"Hide" }</button>
+    <button className='btn' hidden={data==""? true : false} onClick={() => handleOnClick(formButton)}> {formButton===true ? haveParams ? 'update':`add ${title}`:"Hide" }</button>
     <FormComponent fields={fields} title={title} setTitle={props.setTitle} formButton={formButton} />
     </>
 

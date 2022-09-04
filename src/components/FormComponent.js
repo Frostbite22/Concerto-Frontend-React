@@ -7,7 +7,7 @@ function FormComponent(props)
 
   let navigate = useNavigate() ;
 
-  function handleSubmit(event)
+  function handleCreate(event)
   {
     const newData = {} ; 
     for (let i = 0 ; i <event.target.elements.length; i++)
@@ -23,7 +23,7 @@ function FormComponent(props)
       headers: { "Content-Type": "application/json" },
     }).then(function (response) {
         //handle success
-        navigate(props.title);
+        navigate(-1);
         console.log(response);
       }).catch(function (response) {
         //handle error
@@ -33,7 +33,7 @@ function FormComponent(props)
   const fieldsClean = props.fields.filter(field => field !== 'id')
 
   return(
-    <form hidden={props.formButton } className="formLayout" onSubmit={handleSubmit} >
+    <form hidden={props.formButton } className="formLayout" onSubmit={handleCreate} >
       {
         fieldsClean.map((field) => {
           return(

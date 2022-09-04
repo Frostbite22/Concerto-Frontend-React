@@ -59,7 +59,6 @@ function FormatGetData({data,title})
               { location.pathname === `/${title}s/${element.id}` ?
               <div>
                 <button className='btn-delete' onClick={() => {handleOnClickButton(element.id)}}>delete</button>
-                <button className='btn-update' onClick={() => {handleOnClickButton(element.id)}}>update</button>
               </div>
               :null
               }
