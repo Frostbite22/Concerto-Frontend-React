@@ -1,4 +1,5 @@
 import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate, useParams} from 'react-router-dom' ; 
+import axios from "axios";
 
 
 function FormatGetData({data,title})
@@ -11,9 +12,17 @@ function FormatGetData({data,title})
     navigate(`${id}`);
   }
 
+
   function handleOnClickButton(id)
   {
-    console.log("hey")
+      axios({
+        method: "POST",
+        url : `/${title}/${id}/delete`
+      })
+      .then(res => {
+        console.log(res)
+        navigate(-1);
+      }) 
   }
 
   return (
@@ -47,9 +56,13 @@ function FormatGetData({data,title})
                 }
                 ) 
               }
-              <button className='btn-delete' onClick={() => {handleOnClickButton(element.id)}}>delete</button>
-              <button className='btn-update' onClick={() => {handleOnClickButton(element.id)}}>update</button>
-
+              { location.pathname === `/${title}s/${element.id}` ?
+              <div>
+                <button className='btn-delete' onClick={() => {handleOnClickButton(element.id)}}>delete</button>
+                <button className='btn-update' onClick={() => {handleOnClickButton(element.id)}}>update</button>
+              </div>
+              :null
+              }
             </div>
          </>
         )

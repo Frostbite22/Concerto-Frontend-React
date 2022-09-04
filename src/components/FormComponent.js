@@ -5,6 +5,8 @@ import {BrowserRouter, Routes, Route, Link ,  useLocation,Outlet, useNavigate} f
 function FormComponent(props)
 {
 
+  let navigate = useNavigate() ;
+
   function handleSubmit(event)
   {
     const newData = {} ; 
@@ -14,7 +16,6 @@ function FormComponent(props)
     }
 
 
-    console.log(newData)
     axios({
       method: "post",
       url: `/create/${props.title.slice(0, -1)}`,
@@ -22,6 +23,7 @@ function FormComponent(props)
       headers: { "Content-Type": "application/json" },
     }).then(function (response) {
         //handle success
+        navigate(props.title);
         console.log(response);
       }).catch(function (response) {
         //handle error
