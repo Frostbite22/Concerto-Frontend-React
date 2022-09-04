@@ -94,6 +94,38 @@ body {
 
 }
 
+.btn-delete
+{
+  margin: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  border-radius: 4px;
+  background-color: #c73c3c;
+  padding: 6px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+
+}
+
+.btn-update
+{
+  margin: 5px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  border-radius: 4px;
+  background-color: #3cc792;
+  padding: 6px 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+
+}
+
 .background 
 {
   background-image: url("music.jpg") ;

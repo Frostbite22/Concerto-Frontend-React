@@ -10,6 +10,12 @@ function FormatGetData({data,title})
     if(location.pathname === `/${title}`)
     navigate(`${id}`);
   }
+
+  function handleOnClickButton(id)
+  {
+    console.log("hey")
+  }
+
   return (
     <div>
     {
@@ -41,6 +47,9 @@ function FormatGetData({data,title})
                 }
                 ) 
               }
+              <button className='btn-delete' onClick={() => {handleOnClickButton(element.id)}}>delete</button>
+              <button className='btn-update' onClick={() => {handleOnClickButton(element.id)}}>update</button>
+
             </div>
          </>
         )
